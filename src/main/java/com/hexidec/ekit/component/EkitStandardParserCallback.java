@@ -1,4 +1,4 @@
-package com.hexidec.component;
+package com.hexidec.ekit.component;
 
 import javax.swing.text.html.HTMLEditorKit;
 import java.util.HashMap;

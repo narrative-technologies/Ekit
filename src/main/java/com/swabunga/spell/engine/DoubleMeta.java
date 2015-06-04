@@ -4,7 +4,7 @@
  */
 
 
-package  com.swabunga.spell.engine;
+package com.swabunga.spell.engine;
 
 
 /**
@@ -407,7 +407,7 @@ class DoubleMeta implements Transformator{
           else
             current += 1;
           break;
-        case 'Ç':
+        case 'ï¿½':
           MetaphAdd(primary, 'S');
           current += 1;
           break;
@@ -711,7 +711,7 @@ class DoubleMeta implements Transformator{
             current += 1;
           MetaphAdd(primary, 'N');
           break;
-        case 'Ñ':
+        case 'Ã‘':
           current += 1;
           MetaphAdd(primary, 'N');
           break;

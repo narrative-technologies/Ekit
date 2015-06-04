@@ -61,7 +61,7 @@ public class HTMLUtilities
 */
 	}
 
-	/** Diese Methode fügt durch String-Manipulation in jtpSource
+	/** Diese Methode f?gt durch String-Manipulation in jtpSource
 	  * ein neues Listenelement hinzu, content ist dabei der Text der in dem neuen
 	  * Element stehen soll
 	  */
@@ -115,9 +115,9 @@ public class HTMLUtilities
 		}
 	}
 
-	/** Diese Methode löscht durch Stringmanipulation in jtpSource das übergebene Element,
-	  * Alternative für removeElement in ExtendedHTMLDocument, mit closingTag wird angegeben
-	  * ob es ein schließenden Tag gibt
+	/** Diese Methode l?scht durch Stringmanipulation in jtpSource das ?bergebene Element,
+	  * Alternative f?r removeElement in ExtendedHTMLDocument, mit closingTag wird angegeben
+	  * ob es ein schlie?enden Tag gibt
 	  */
 	public void removeTag(Element element, boolean closingTag)
 	{
@@ -184,7 +184,7 @@ public class HTMLUtilities
 	}
 
 	/** Diese Methode gibt jeweils den Start- und Endoffset des Elements
-	  * sowie dem entsprechenden schließenden Tag zurück
+	  * sowie dem entsprechenden schlie?enden Tag zur?ck
 	  */
 	public int[] getPositions(Element element, String source, boolean closingTag, String idString)
 	{
@@ -212,7 +212,7 @@ public class HTMLUtilities
 			// Position des 1. Treffer auf den End-Tag wird bestimmt
 			beginEndTag = source.indexOf(searchEndTagString, caret);
 			endEndTag = beginEndTag + searchEndTagString.length();
-			// Schleife läuft solange, bis keine neuen StartTags mehr gefunden werden
+			// Schleife l?uft solange, bis keine neuen StartTags mehr gefunden werden
 			int interncaret = position[1];
 			do
 			{
@@ -231,7 +231,7 @@ public class HTMLUtilities
 						interncaret = temphitpoint + searchString.length();
 					}
 				} while(flaghitup);
-				// hitUp enthält die Anzahl der neuen Start-Tags
+				// hitUp enth?lt die Anzahl der neuen Start-Tags
 				if(hitUp == 0)
 				{
 					end = true;
@@ -257,7 +257,7 @@ public class HTMLUtilities
 		return position;
 	}
 
-	/* Diese Methode prüft ob der übergebene Tag sich in der Hierachie nach oben befindet */
+	/* Diese Methode pr?ft ob der ?bergebene Tag sich in der Hierachie nach oben befindet */
 	public boolean checkParentsTag(HTML.Tag tag)
 	{
 		Element e = parent.getExtendedHtmlDoc().getParagraphElement(parent.getCaretPosition());
@@ -276,7 +276,7 @@ public class HTMLUtilities
 		return false;
 	}
 
-	/* Diese Methoden geben das erste gefundende dem übergebenen tags entsprechende Element zurück */
+	/* Diese Methoden geben das erste gefundende dem ?bergebenen tags entsprechende Element zur?ck */
 	public Element getListItemParent()
 	{
 		String listItemTag = HTML.Tag.LI.toString();
@@ -308,8 +308,8 @@ public class HTMLUtilities
 		return null;
 	}
 
-	/* Diese Methoden entfernen Attribute aus dem SimpleAttributeSet, gemäß den übergebenen Werten, und
-		geben das Ergebnis als SimpleAttributeSet zurück*/
+	/* Diese Methoden entfernen Attribute aus dem SimpleAttributeSet, gem?? den ?bergebenen Werten, und
+		geben das Ergebnis als SimpleAttributeSet zur?ck*/
 	public SimpleAttributeSet removeAttributeByKey(SimpleAttributeSet sourceAS, String removeKey)
 	{
 		SimpleAttributeSet temp = new SimpleAttributeSet();
@@ -396,7 +396,7 @@ public class HTMLUtilities
 		}
 	}
 
-	/* liefert den entsprechenden HTML.Tag zum Element zurück */
+	/* liefert den entsprechenden HTML.Tag zum Element zur?ck */
 	public HTML.Tag getHTMLTag(Element e)
 	{
 		if(tags.containsKey(e.getName()))

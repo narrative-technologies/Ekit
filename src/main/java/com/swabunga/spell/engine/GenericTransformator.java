@@ -1,4 +1,4 @@
-package  com.swabunga.spell.engine;
+package com.swabunga.spell.engine;
 
 import java.io.*;
 import java.util.*;
