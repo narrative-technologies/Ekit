@@ -3,7 +3,7 @@
  * formatted with JxBeauty (c) johann.langhofer@nextra.at
  */
 
-package  com.swabunga.spell.swing;
+package com.swabunga.spell.swing;
 
 import com.swabunga.spell.engine.Word;
 import com.swabunga.spell.event.*;
