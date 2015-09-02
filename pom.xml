@@ -6,7 +6,7 @@
 
     <groupId>com.hexidec</groupId>
     <artifactId>ekit</artifactId>
-    <version>1.7c</version>
+    <version>1.7c-01-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
