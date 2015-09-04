@@ -634,17 +634,13 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 		/* FILE Menu */
 		jMenuFile              = new JMenu(Translatrix.getTranslationString("File"));
 		htMenus.put(KEY_MENU_FILE, jMenuFile);
-		JMenuItem jmiNew       = new JMenuItem(Translatrix.getTranslationString("NewDocument"));                     jmiNew.setActionCommand(CMD_DOC_NEW);              jmiNew.addActionListener(this);       jmiNew.setAccelerator(KeyStroke.getKeyStroke('N', CTRLKEY, false));      if(showMenuIcons) { jmiNew.setIcon(getEkitIcon("New")); }
-		jMenuFile.add(jmiNew);
-		JMenuItem jmiNewStyled = new JMenuItem(Translatrix.getTranslationString("NewStyledDocument"));               jmiNewStyled.setActionCommand(CMD_DOC_NEW_STYLED); jmiNewStyled.addActionListener(this); if(showMenuIcons) { jmiNewStyled.setIcon(getEkitIcon("NewStyled")); }
-		jMenuFile.add(jmiNewStyled);
-		JMenuItem jmiOpenHTML  = new JMenuItem(Translatrix.getTranslationString("OpenDocument") + menuDialog);       jmiOpenHTML.setActionCommand(CMD_DOC_OPEN_HTML);   jmiOpenHTML.addActionListener(this);  jmiOpenHTML.setAccelerator(KeyStroke.getKeyStroke('O', CTRLKEY, false)); if(showMenuIcons) { jmiOpenHTML.setIcon(getEkitIcon("Open")); }
-		jMenuFile.add(jmiOpenHTML);
+		JMenuItem jmiNew       = new JMenuItem(Translatrix.getTranslationString("NewDocument"));                     jmiNew.setActionCommand(CMD_DOC_NEW);              jmiNew.addActionListener(this);       jmiNew.setAccelerator(KeyStroke.getKeyStroke('N', CTRLKEY, false));      if(showMenuIcons) { jmiNew.setIcon(getEkitIcon("New")); }; jMenuFile.add(jmiNew);
+		JMenuItem jmiNewStyled = new JMenuItem(Translatrix.getTranslationString("NewStyledDocument"));               jmiNewStyled.setActionCommand(CMD_DOC_NEW_STYLED); jmiNewStyled.addActionListener(this); if(showMenuIcons) { jmiNewStyled.setIcon(getEkitIcon("NewStyled")); };   jMenuFile.add(jmiNewStyled);
+		JMenuItem jmiOpenHTML  = new JMenuItem(Translatrix.getTranslationString("OpenDocument") + menuDialog);       jmiOpenHTML.setActionCommand(CMD_DOC_OPEN_HTML);   jmiOpenHTML.addActionListener(this);  jmiOpenHTML.setAccelerator(KeyStroke.getKeyStroke('O', CTRLKEY, false)); if(showMenuIcons) { jmiOpenHTML.setIcon(getEkitIcon("Open")); }; jMenuFile.add(jmiOpenHTML);
 		JMenuItem jmiOpenCSS   = new JMenuItem(Translatrix.getTranslationString("OpenStyle") + menuDialog);          jmiOpenCSS.setActionCommand(CMD_DOC_OPEN_CSS);     jmiOpenCSS.addActionListener(this);   jMenuFile.add(jmiOpenCSS);
 		JMenuItem jmiOpenB64   = new JMenuItem(Translatrix.getTranslationString("OpenBase64Document") + menuDialog); jmiOpenB64.setActionCommand(CMD_DOC_OPEN_BASE64);  jmiOpenB64.addActionListener(this);   jMenuFile.add(jmiOpenB64);
 		jMenuFile.addSeparator();
-		JMenuItem jmiSave      = new JMenuItem(Translatrix.getTranslationString("Save"));                  jmiSave.setActionCommand(CMD_DOC_SAVE);           jmiSave.addActionListener(this);     jmiSave.setAccelerator(KeyStroke.getKeyStroke('S', CTRLKEY, false)); if(showMenuIcons) { jmiSave.setIcon(getEkitIcon("Save")); }
-		jMenuFile.add(jmiSave);
+		JMenuItem jmiSave      = new JMenuItem(Translatrix.getTranslationString("Save"));                  jmiSave.setActionCommand(CMD_DOC_SAVE);           jmiSave.addActionListener(this);     jmiSave.setAccelerator(KeyStroke.getKeyStroke('S', CTRLKEY, false)); if(showMenuIcons) { jmiSave.setIcon(getEkitIcon("Save")); }; jMenuFile.add(jmiSave);
 		JMenuItem jmiSaveAs    = new JMenuItem(Translatrix.getTranslationString("SaveAs") + menuDialog);   jmiSaveAs.setActionCommand(CMD_DOC_SAVE_AS);      jmiSaveAs.addActionListener(this);   jMenuFile.add(jmiSaveAs);
 		JMenuItem jmiSaveBody  = new JMenuItem(Translatrix.getTranslationString("SaveBody") + menuDialog); jmiSaveBody.setActionCommand(CMD_DOC_SAVE_BODY);  jmiSaveBody.addActionListener(this); jMenuFile.add(jmiSaveBody);
 		JMenuItem jmiSaveRTF   = new JMenuItem(Translatrix.getTranslationString("SaveRTF") + menuDialog);  jmiSaveRTF.setActionCommand(CMD_DOC_SAVE_RTF);    jmiSaveRTF.addActionListener(this);  jMenuFile.add(jmiSaveRTF);
@@ -1195,16 +1191,14 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 		/* Create the scroll area for the text pane */
 		jspViewport = new JScrollPane(jtpMain);
 		jspViewport.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-//		jspViewport.setPreferredSize(new Dimension(400, 400));
-//		Dimension minSize = new Dimension(400, 400);
-//		jspViewport.setMinimumSize(minSize);
-		jspViewport.setMaximumSize(null);
+		jspViewport.setPreferredSize(new Dimension(400, 400));
+		jspViewport.setMinimumSize(new Dimension(32, 32));
 
 		/* Create the scroll area for the source viewer */
 		jspSource = new JScrollPane(jtpSource);
-//		jspSource.setPreferredSize(new Dimension(400, 100));
-//		jspSource.setMinimumSize(minSize);
-		jspSource.setMaximumSize(null);
+		jspSource.setPreferredSize(new Dimension(400, 100));
+		jspSource.setMinimumSize(new Dimension(32, 32));
+
 
 		jspltDisplay = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		jspltDisplay.setTopComponent(jspViewport);
@@ -1225,7 +1219,6 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 		/* Add the components to the app */
 		this.setLayout(new BorderLayout());
 		this.add(jspltDisplay, BorderLayout.CENTER);
-		this.setMaximumSize(null);
 	}
 
 	/** Master Constructor from versions 1.3 and earlier
@@ -1698,7 +1691,6 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 					{
 						htmlUtilities.delete();
 						refreshOnUpdate();
-						return;
 					}
 					else
 					{
@@ -1876,7 +1868,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 		{
 			if(isSourceWindowActive())
 			{
-				if(de.getDocument() instanceof HTMLDocument || de.getDocument() instanceof ExtendedHTMLDocument)
+				if(de.getDocument() instanceof HTMLDocument)
 				{
 					jtpSource.getDocument().removeDocumentListener(this);
 					jtpSource.setText(jtpMain.getText());
@@ -1948,8 +1940,8 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 	private void insertTable(Hashtable attribs, String[] fieldNames, String[] fieldTypes, String[] fieldValues)
 	throws IOException, BadLocationException, RuntimeException {
 		int caretPos = jtpMain.getCaretPosition();
-		StringBuffer compositeElement = new StringBuffer("<TABLE");
-		if(attribs != null && attribs.size() > 0)
+		StringBuilder compositeElement = new StringBuilder("<TABLE");
+		if(attribs != null && !attribs.isEmpty())
 		{
 			Enumeration attribEntries = attribs.keys();
 			while(attribEntries.hasMoreElements())
@@ -1980,7 +1972,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 				for(String fieldName : fieldNames)
 				{
 					String propValue = propertiesDialog.getFieldValue(fieldName);
-					if(propValue != null && propValue != "" && propValue.length() > 0)
+					if(propValue != null && !propValue.isEmpty())
 					{
 						if(fieldName.equals("rows"))
 						{
