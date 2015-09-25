@@ -53,6 +53,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <additionalparam>-Xdoclint:none</additionalparam> <!-- Note that this requires we use JDK 1.8 to execute Maven -->
                     <show>public</show>
                     <nohelp>true</nohelp>
                 </configuration>
