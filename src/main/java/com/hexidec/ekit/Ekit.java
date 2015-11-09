@@ -21,23 +21,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.hexidec.ekit;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
-import java.io.FileWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Vector;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JToolBar;
-
-import com.hexidec.ekit.EkitCore;
-import com.hexidec.ekit.EkitCoreSpell;
 
 /** Ekit
   * App for editing and saving HTML in a Java text component
@@ -81,7 +71,7 @@ public class Ekit extends JFrame implements WindowListener
 		}
 		else
 		{
-			ekitCore = new EkitCore(false, sDocument, sStyleSheet, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, false, multiBar, (multiBar ? EkitCore.TOOLBAR_DEFAULT_MULTI : EkitCore.TOOLBAR_DEFAULT_SINGLE), enterBreak);
+			ekitCore = new EkitCore(false, sDocument, sStyleSheet, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, false, multiBar, (multiBar ? EkitCore.TOOLBAR_DEFAULT_MULTI : EkitCore.TOOLBAR_DEFAULT_SINGLE), enterBreak, null);
 		}
 
 		ekitCore.setFrame(this);

@@ -30,72 +30,81 @@ import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 
-import com.hexidec.ekit.component.ExtendedHTMLDocument;
-
 /**
-  * This class extends HTMLEditorKit so that it can provide other renderer classes
-  * instead of the defaults. Most important is the part which renders relative
-  * image paths.
-  *
-  * @author <a href="mailto:jal@grimor.com">Frits Jalvingh</a>
-  * @version 1.0
-  */
+ * This class extends HTMLEditorKit so that it can provide other renderer classes
+ * instead of the defaults. Most important is the part which renders relative
+ * image paths.
+ *
+ * @author <a href="mailto:jal@grimor.com">Frits Jalvingh</a>
+ * @version 1.0
+ */
 
-public class ExtendedHTMLEditorKit extends HTMLEditorKit
-{
-	/** Constructor
-	  */
-	public ExtendedHTMLEditorKit()
-	{
-	}
+public class ExtendedHTMLEditorKit extends HTMLEditorKit {
+    private static final long serialVersionUID = -5790314063148882944L;
 
-	/** Method for returning a ViewFactory which handles the image rendering.
-	  */
-	public ViewFactory getViewFactory()
-	{
-		return new HTMLFactoryExtended();
-	}
+    private transient ImageProvider _imageProvider = null;
 
-	public Document createDefaultDocument()
-	{
-		StyleSheet styles = getStyleSheet();
-		StyleSheet ss = new StyleSheet();
-		ss.addStyleSheet(styles);
-		ExtendedHTMLDocument doc = new ExtendedHTMLDocument(ss);
-		doc.setParser(getParser());
-		doc.setAsynchronousLoadPriority(4);
-		doc.setTokenThreshold(100);
-		return doc;
-	}
+    /**
+     * Constructor
+     */
+    public ExtendedHTMLEditorKit() {
+    }
+
+    public ExtendedHTMLEditorKit(ImageProvider imageProvider) {
+        _imageProvider = imageProvider;
+    }
+
+    public void setImageProvider(ImageProvider imageProvider) {
+        _imageProvider = imageProvider;
+    }
+
+    /**
+     * Method for returning a ViewFactory which handles the image rendering.
+     */
+    @Override
+    public ViewFactory getViewFactory() {
+        return new HTMLFactoryExtended();
+    }
+
+    @Override
+    public Document createDefaultDocument() {
+        StyleSheet styles = getStyleSheet();
+        StyleSheet ss = new StyleSheet();
+        ss.addStyleSheet(styles);
+        ExtendedHTMLDocument doc = new ExtendedHTMLDocument(ss);
+        doc.setParser(getParser());
+        doc.setAsynchronousLoadPriority(4);
+        doc.setTokenThreshold(100);
+        return doc;
+    }
 
 /* Inner Classes --------------------------------------------- */
 
-	/** Class that replaces the default ViewFactory and supports
-	  * the proper rendering of both URL-based and local images.
-	  */
-	public static class HTMLFactoryExtended extends HTMLFactory implements ViewFactory
-	{
-		/** Constructor
-		  */
-		public HTMLFactoryExtended()
-		{
-		}
+    /**
+     * Class that replaces the default ViewFactory and supports
+     * the proper rendering of both URL-based and local images.
+     */
+    public class HTMLFactoryExtended extends HTMLFactory implements ViewFactory {
+        /**
+         * Constructor
+         */
+        public HTMLFactoryExtended() {
+        }
 
-		/** Method to handle IMG tags and
-		  * invoke the image loader.
-		  */
-		public View create(Element elem)
-		{
-			Object obj = elem.getAttributes().getAttribute(StyleConstants.NameAttribute);
-			if(obj instanceof HTML.Tag)
-			{
-				HTML.Tag tagType = (HTML.Tag)obj;
-				if(tagType == HTML.Tag.IMG)
-				{
-					return new RelativeImageView(elem);
-				}
-			}
-			return super.create(elem);
-		}
-	}
+        /**
+         * Method to handle IMG tags and
+         * invoke the image loader.
+         */
+        @Override
+        public View create(Element elem) {
+            Object obj = elem.getAttributes().getAttribute(StyleConstants.NameAttribute);
+            if (obj instanceof HTML.Tag) {
+                HTML.Tag tagType = (HTML.Tag) obj;
+                if (tagType == HTML.Tag.IMG) {
+                    return new RelativeImageView(elem, _imageProvider);
+                }
+            }
+            return super.create(elem);
+        }
+    }
 }

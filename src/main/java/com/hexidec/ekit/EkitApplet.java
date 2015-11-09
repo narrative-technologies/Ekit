@@ -21,18 +21,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.hexidec.ekit;
 
-import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
+import javax.swing.*;
+import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Vector;
-import javax.swing.JApplet;
-import javax.swing.JLabel;
-
-import com.hexidec.ekit.EkitCore;
 
 /** EkitApplet
   * Applet for editing and saving HTML in a Java browser component
@@ -101,7 +94,7 @@ public class EkitApplet extends JApplet
 		}
 		else
 		{
-			ekitCore = new EkitCore(true, sRawDocument, urlCSS, showToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, false, showToolBarMulti, toolbarSeq, enterBreak);
+			ekitCore = new EkitCore(true, sRawDocument, urlCSS, showToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, false, showToolBarMulti, toolbarSeq, enterBreak, null);
 		}
 
 		/* Add menus, based on whether or not they are requested (all are shown by default) */
